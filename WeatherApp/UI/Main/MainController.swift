@@ -192,24 +192,16 @@ class MainController: UIViewController {
     func setupView(model: WeaherModel?) {
         let dayOne = model?.dailyForecasts?[0]
         tempLabel.text = "\(dayOne?.temperature?.maximum?.value ?? 0)C / \(dayOne?.temperature?.minimum?.value ?? 0 )C"
-        
         let s = String(format: "%.2f", ((dayOne?.temperature?.maximum?.value ?? 0) + (dayOne?.temperature?.minimum?.value ?? 0 )) / 2)
-        
         averageTempLabel.text = "Average \(s)C"
-        
         let icon = dayOne?.night?.icon
-        
         if (icon ?? 0) > 9 {
             iconTemp.kf.setImage(with: URL(string: "https://developer.accuweather.com/sites/default/files/\((icon ?? 0))-s.png")!)
         } else {
             iconTemp.kf.setImage(with: URL(string: "https://developer.accuweather.com/sites/default/files/0\((icon ?? 0))-s.png")!)
         }
-        
-        
         var newModel =  model?.dailyForecasts
-        
         newModel?.remove(at: 0)
-        
         self.dailyForecast = newModel
         dayForecastTable.reloadData()
     }

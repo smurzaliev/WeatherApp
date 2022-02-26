@@ -32,13 +32,12 @@ class WeatherCell: UITableViewCell {
     }()
         
         override func layoutSubviews() {
-            
             addSubview(dayTemp)
             dayTemp.snp.makeConstraints { make in
                 make.left.equalToSuperview().offset(80)
                 make.centerY.equalToSuperview()
             }
-            
+        
             addSubview(nightTemp)
             nightTemp.snp.makeConstraints { make in
                 make.right.equalToSuperview().offset(-80)
@@ -54,15 +53,12 @@ class WeatherCell: UITableViewCell {
     
     func fill(dayOne: DailyForecast?) {
             dayTemp.text = "\(dayOne?.temperature?.maximum?.value ?? 0) °C"
-            
             nightTemp.text = "\(dayOne?.temperature?.minimum?.value ?? 0 ) °C"
-            
-            let icom = dayOne?.night?.icon
-            
-            if (icom ?? 0) > 9 {
-                iconWeather.kf.setImage(with: URL(string: "https://developer.accuweather.com/sites/default/files/\((icom ?? 0))-s.png")!)
+            let icon = dayOne?.night?.icon
+            if (icon ?? 0) > 9 {
+                iconWeather.kf.setImage(with: URL(string: "https://developer.accuweather.com/sites/default/files/\((icon ?? 0))-s.png")!)
             } else {
-                iconWeather.kf.setImage(with: URL(string: "https://developer.accuweather.com/sites/default/files/0\((icom ?? 0))-s.png")!)
+                iconWeather.kf.setImage(with: URL(string: "https://developer.accuweather.com/sites/default/files/0\((icon ?? 0))-s.png")!)
             }
         }
 }

@@ -11,21 +11,7 @@ import RealmSwift
 class SearchDocument {
     
     let realm = try! Realm()
-        
-//    func addCity(in realm: Realm, city: City) {
-//        
-//        let addCity = City()
-//        addCity.id = city.cityNumber
-//        addCity.cityNumber = city.cityNumber
-//        addCity.cityName = city.cityName
-//        addCity.cityType = city.cityType
-//        addCity.cityCountry = city.cityCountry
-//                
-//        try! realm.write {
-//            realm.add(addCity)
-//        }
-//    }
-    
+
     func clearCities() {
         try! realm.write {
             realm.deleteAll()
@@ -49,7 +35,6 @@ class SearchDocument {
             defaultCity.cityType = city.cityType
             defaultCity.cityCountry = city.cityCountry
         }
-
     }
     
     func defaultCity(in realm: Realm) -> City {

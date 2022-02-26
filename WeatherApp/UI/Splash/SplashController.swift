@@ -17,10 +17,11 @@ class SplashController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    }
+    
+    private func setView() {
         view.backgroundColor = .black
         let realm = try! Realm()
-
         let defaultCity = document.defaultCity(in: realm)
         
         if defaultCity.cityNumber != "" {

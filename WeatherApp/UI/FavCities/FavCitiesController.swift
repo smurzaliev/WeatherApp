@@ -14,10 +14,7 @@ import RealmSwift
 class FavCitiesController: UIViewController {
     
     private var document = SearchDocument()
-    
     let realm = try! Realm()
-    
-//    var cities: Results<City>
     
     private lazy var backButton: MDCButton = {
         let view = MDCButton(type: .system)
@@ -91,7 +88,6 @@ class FavCitiesController: UIViewController {
 extension FavCitiesController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let cities = realm.objects(City.self)
-
         return cities.count
     }
     
@@ -116,6 +112,5 @@ extension FavCitiesController: UITableViewDelegate, UITableViewDataSource {
         }
         document.setDefaultCity(in: realm, city: cities[indexPath.row])
         navigationController?.popViewController(animated: true)
-        
     }
 }

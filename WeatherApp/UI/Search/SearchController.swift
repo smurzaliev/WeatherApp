@@ -55,7 +55,6 @@ class SearchController: UIViewController {
     }
     
     private func getSearchCity() {
-        
         var url = URLComponents(string: "http://dataservice.accuweather.com/locations/v1/cities/autocomplete")!
         url.queryItems = [
             URLQueryItem(name: "q", value: searchField.text ?? String()),
@@ -83,15 +82,12 @@ class SearchController: UIViewController {
     }
     
     override func viewDidLoad() {
-        
-        
         view.backgroundColor = UIColor(named: "AccentOne")
         setSubViews()
         
     }
     
     private func setSubViews() {
-                    
         view.addSubview(searchField)
         searchField.snp.makeConstraints { make in
             make.top.equalTo(view.safeArea.top).offset(10)
@@ -152,5 +148,4 @@ extension SearchController: UITableViewDelegate, UITableViewDataSource {
         cell.fill(model: model)
         return cell
     }
-    
 }
