@@ -32,24 +32,28 @@ class WeatherCell: UITableViewCell {
     }()
         
         override func layoutSubviews() {
-            addSubview(dayTemp)
-            dayTemp.snp.makeConstraints { make in
-                make.left.equalToSuperview().offset(80)
-                make.centerY.equalToSuperview()
-            }
-        
-            addSubview(nightTemp)
-            nightTemp.snp.makeConstraints { make in
-                make.right.equalToSuperview().offset(-80)
-                make.centerY.equalToSuperview()
-            }
-            
-            addSubview(iconWeather)
-            iconWeather.snp.makeConstraints { make in
-                make.center.equalToSuperview()
-                make.width.height.equalTo(60)
-            }
+            setView() 
         }
+    
+    private func setView() {
+        addSubview(dayTemp)
+        dayTemp.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(80)
+            make.centerY.equalToSuperview()
+        }
+    
+        addSubview(nightTemp)
+        nightTemp.snp.makeConstraints { make in
+            make.right.equalToSuperview().offset(-80)
+            make.centerY.equalToSuperview()
+        }
+        
+        addSubview(iconWeather)
+        iconWeather.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.width.height.equalTo(60)
+        }
+    }
     
     func fill(dayOne: DailyForecast?) {
             dayTemp.text = "\(dayOne?.temperature?.maximum?.value ?? 0) °C"

@@ -11,7 +11,7 @@ import RealmSwift
 class SearchDocument {
     
     let realm = try! Realm()
-
+    
     func clearCities() {
         try! realm.write {
             realm.deleteAll()

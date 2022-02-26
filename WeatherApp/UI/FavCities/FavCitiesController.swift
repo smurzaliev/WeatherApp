@@ -58,6 +58,11 @@ class FavCitiesController: UIViewController {
         setSubViews()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        setView()
+        setSubViews()
+    }
+    
     private func setView() {
         view.backgroundColor = UIColor(named: "AccentOne")
     }

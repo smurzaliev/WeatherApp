@@ -47,7 +47,6 @@ class SearchController: UIViewController {
         return view
     }()
     
-    
     private var models: [SearchModel]? = nil
     
     @objc func clickSearch(view: UIButton) {
@@ -58,7 +57,7 @@ class SearchController: UIViewController {
         var url = URLComponents(string: "http://dataservice.accuweather.com/locations/v1/cities/autocomplete")!
         url.queryItems = [
             URLQueryItem(name: "q", value: searchField.text ?? String()),
-            URLQueryItem(name: "apikey", value: "mAitxnyzvA8vyWt6quAPGoIKbJ3rRhQe"),
+            URLQueryItem(name: "apikey", value: "YS7mx8TJj5n3s2q6Da5W3hv5BQD3ld9L"),
             URLQueryItem(name: "language", value: "en"),
         ]
         
@@ -130,7 +129,7 @@ extension SearchController: UITableViewDelegate, UITableViewDataSource {
                 realm.add(addCity)
             }
             document.setDefaultCity(in: realm, city: addCity)
-            navigationController?.pushViewController(MainController(), animated: true)
+            navigationController?.popViewController(animated: true)
         }
     }
     

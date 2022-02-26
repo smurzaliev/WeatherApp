@@ -37,6 +37,10 @@ class FavCitiesCell: UITableViewCell {
     private lazy var containerView = UIView()
     
     override func layoutSubviews() {
+        setView()
+    }
+    
+    private func setView() {
         containerView.layer.cornerRadius = 8
         containerView.backgroundColor = .darkGray
         

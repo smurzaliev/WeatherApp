@@ -89,11 +89,8 @@ class MainController: UIViewController {
     var dailyForecast: [DailyForecast]? = nil
     
     override func viewDidLoad() {
-        
         setView()
         setSubViews()
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -101,9 +98,7 @@ class MainController: UIViewController {
         setSubViews()
     }
     private func setView() {
-        
         view.backgroundColor = UIColor(named: "AccentOne")
-
     }
     
     private func setSubViews() {
@@ -153,19 +148,17 @@ class MainController: UIViewController {
             make.left.right.equalToSuperview()
             make.bottom.equalTo(view.safeArea.bottom)
         }
-        
         getWeather()
     }
     
     private func getWeather() {
-        
         let defaultCity = realm.object(ofType: City.self, forPrimaryKey: "default")
         let cityKey = defaultCity?.cityNumber ?? String()
         print(cityKey)
         titleCity.text = defaultCity?.cityName
         var url = URLComponents(string: "http://dataservice.accuweather.com/forecasts/v1/daily/5day/\(cityKey)")!
         url.queryItems = [
-            URLQueryItem(name: "apikey", value: "mAitxnyzvA8vyWt6quAPGoIKbJ3rRhQe"),
+            URLQueryItem(name: "apikey", value: "YS7mx8TJj5n3s2q6Da5W3hv5BQD3ld9L"),
             URLQueryItem(name: "language", value: "en"),
             URLQueryItem(name: "details", value: "false"),
             URLQueryItem(name: "metric", value: "true"),
@@ -191,9 +184,9 @@ class MainController: UIViewController {
     
     func setupView(model: WeaherModel?) {
         let dayOne = model?.dailyForecasts?[0]
-        tempLabel.text = "\(dayOne?.temperature?.maximum?.value ?? 0)C / \(dayOne?.temperature?.minimum?.value ?? 0 )C"
+        tempLabel.text = "\(dayOne?.temperature?.maximum?.value ?? 0) °C / \(dayOne?.temperature?.minimum?.value ?? 0 ) °C"
         let s = String(format: "%.2f", ((dayOne?.temperature?.maximum?.value ?? 0) + (dayOne?.temperature?.minimum?.value ?? 0 )) / 2)
-        averageTempLabel.text = "Average \(s)C"
+        averageTempLabel.text = "Average \(s) °C"
         let icon = dayOne?.night?.icon
         if (icon ?? 0) > 9 {
             iconTemp.kf.setImage(with: URL(string: "https://developer.accuweather.com/sites/default/files/\((icon ?? 0))-s.png")!)

@@ -13,10 +13,15 @@ class SplashController: UIViewController {
     
     let document = SearchDocument()
     
-    private let apiKey = "mAitxnyzvA8vyWt6quAPGoIKbJ3rRhQe"
+    private let apiKey = "YS7mx8TJj5n3s2q6Da5W3hv5BQD3ld9L"
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setView()
     }
     
     private func setView() {

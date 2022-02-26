@@ -36,9 +36,12 @@ class SearchCityCell: UITableViewCell {
     private lazy var containerView = UIView()
     
     override func layoutSubviews() {
+        setView()
+    }
+    
+    private func setView() {
         containerView.layer.cornerRadius = 8
         containerView.backgroundColor = .darkGray
-        
         addSubview(containerView)
         containerView.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(16)
